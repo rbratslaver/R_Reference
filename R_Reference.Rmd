@@ -7,7 +7,26 @@ output:
     number_sections: true
 ---
 
+# String Syntax
+
+## NAs and Blanks
 ```{r}
+
+drop_na(x) #drop all NAs
+
+drop_na(c()) #drop NAs from certain columns
+
+x <- flights[!complete.cases(flights),] #identify rows with any NAs
+
+colSums(is.na(x)) #count NAs in each column
+
+na.strings = c("", " ", NA) #put into import syntax to convert blanks to NAs
+
+x %>% replace_na(list(x = 'some_na_value', y = 'some_value')) #replace NAs in individual columns
+
+distinct(x, var1, .keep_all = TRUE) #distinct dataframe
+
+
 
 ```
 

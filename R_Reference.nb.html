@@ -1699,15 +1699,45 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#string-syntax"><span class="toc-section-number">1</span> String Syntax</a><ul>
+<li><a href="#nas-and-blanks"><span class="toc-section-number">1.1</span> NAs and Blanks</a></li>
+</ul></li>
+</ul>
+</div>
 
 <!-- rnb-text-begin -->
+<div id="string-syntax" class="section level1">
+<h1><span class="header-section-number">1</span> String Syntax</h1>
+<div id="nas-and-blanks" class="section level2">
+<h2><span class="header-section-number">1.1</span> NAs and Blanks</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kcm9wX25hKHgpICNkcm9wIGFsbCBOQXNcblxuZHJvcF9uYShjKCkpICNkcm9wIE5BcyBmcm9tIGNlcnRhaW4gY29sdW1uc1xuXG54IDwtIGZsaWdodHNbIWNvbXBsZXRlLmNhc2VzKGZsaWdodHMpLF0gI2lkZW50aWZ5IHJvd3Mgd2l0aCBhbnkgTkFzXG5cbmNvbFN1bXMoaXMubmEoeCkpICNjb3VudCBOQXMgaW4gZWFjaCBjb2x1bW5cblxubmEuc3RyaW5ncyA9IGMoXCJcIiwgXCIgXCIsIE5BKSAjcHV0IGludG8gaW1wb3J0IHN5bnRheCB0byBjb252ZXJ0IGJsYW5rcyB0byBOQXNcblxueCAlPiUgcmVwbGFjZV9uYShsaXN0KHggPSAnc29tZV9uYV92YWx1ZScsIHkgPSAnc29tZV92YWx1ZScpKSAjcmVwbGFjZSBOQXMgaW4gaW5kaXZpZHVhbCBjb2x1bW5zXG5cbmRpc3RpbmN0KHgsIHZhcjEsIC5rZWVwX2FsbCA9IFRSVUUpICNkaXN0aW5jdCBkYXRhZnJhbWVcblxuXG5cbmBgYCJ9 -->
+<pre class="r"><code>
+drop_na(x) #drop all NAs
+
+drop_na(c()) #drop NAs from certain columns
+
+x &lt;- flights[!complete.cases(flights),] #identify rows with any NAs
+
+colSums(is.na(x)) #count NAs in each column
+
+na.strings = c(&quot;&quot;, &quot; &quot;, NA) #put into import syntax to convert blanks to NAs
+
+x %&gt;% replace_na(list(x = 'some_na_value', y = 'some_value')) #replace NAs in individual columns
+
+distinct(x, var1, .keep_all = TRUE) #distinct dataframe
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+</div>
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlJfUmVmZXJlbmNlIg0KYXV0aG9yOiBSb21hbiANCm91dHB1dDoNCiAgaHRtbF9ub3RlYm9vazoNCiAgICB0b2M6IHRydWUNCiAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUNCi0tLQ0KDQpgYGB7cn0NCg0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlJfUmVmZXJlbmNlIg0KYXV0aG9yOiBSb21hbiANCm91dHB1dDoNCiAgaHRtbF9ub3RlYm9vazoNCiAgICB0b2M6IHRydWUNCiAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUNCi0tLQ0KDQojIFN0cmluZyBTeW50YXgNCg0KIyMgTkFzIGFuZCBCbGFua3MNCmBgYHtyfQ0KDQpkcm9wX25hKHgpICNkcm9wIGFsbCBOQXMNCg0KZHJvcF9uYShjKCkpICNkcm9wIE5BcyBmcm9tIGNlcnRhaW4gY29sdW1ucw0KDQp4IDwtIGZsaWdodHNbIWNvbXBsZXRlLmNhc2VzKGZsaWdodHMpLF0gI2lkZW50aWZ5IHJvd3Mgd2l0aCBhbnkgTkFzDQoNCmNvbFN1bXMoaXMubmEoeCkpICNjb3VudCBOQXMgaW4gZWFjaCBjb2x1bW4NCg0KbmEuc3RyaW5ncyA9IGMoIiIsICIgIiwgTkEpICNwdXQgaW50byBpbXBvcnQgc3ludGF4IHRvIGNvbnZlcnQgYmxhbmtzIHRvIE5Bcw0KDQp4ICU+JSByZXBsYWNlX25hKGxpc3QoeCA9ICdzb21lX25hX3ZhbHVlJywgeSA9ICdzb21lX3ZhbHVlJykpICNyZXBsYWNlIE5BcyBpbiBpbmRpdmlkdWFsIGNvbHVtbnMNCg0KZGlzdGluY3QoeCwgdmFyMSwgLmtlZXBfYWxsID0gVFJVRSkgI2Rpc3RpbmN0IGRhdGFmcmFtZQ0KDQoNCg0KYGBgDQoNCg==</div>
 
 
 
