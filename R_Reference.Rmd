@@ -9,7 +9,7 @@ output:
 
 # String Syntax
 
-## NAs and Blanks
+## NAs, Blanks, Replace, Format
 ```{r}
 
 drop_na(x) #drop all NAs
@@ -24,7 +24,14 @@ na.strings = c("", " ", NA) #put into import syntax to convert blanks to NAs
 
 x %>% replace_na(list(x = 'some_na_value', y = 'some_value')) #replace NAs in individual columns
 
-distinct(x, var1, .keep_all = TRUE) #distinct dataframe
+x[is.na(x)] <- 0 #replace all NAs in dataframe
+
+movies[nums][is.na(movies[nums])] <- 0 #replace NAs for nums
+movies[cats][is.na(movies[cats])] <- "MEOW" #replace NAs for cats
+
+nbaclean %<>% select_if(function(x) !all(is.na(x))) #select where not all values in a given column are NA
+
+distinct(x, var1, .keep_all = TRUE) #distinct dataframes
 
 
 
