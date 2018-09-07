@@ -33,6 +33,37 @@ nbaclean %<>% select_if(function(x) !all(is.na(x))) #select where not all values
 
 distinct(x, var1, .keep_all = TRUE) #distinct dataframes
 
+movies %<>% mutate_at(vars(budget, gross, matches('face|user')), funs(prettyNum(., big.mark = ","))) #add commas to numeric vars
+
+#replace strings in column names
+names(a) <- gsub(x = names(a), pattern = "\\.", replacement = "#") 
+names(test) <- str_replace(names(test), "Total", "") 
+
+#text to columns and replace string in column names
+test <- cSplit(tickets, splitCols = c('Severity', 'Priority','Satisfaction'),sep = '-')
+names(test)[str_detect(names(test), '2')] <- gsub('2', 'level',names(test)[str_detect(names(test), '2')])
+
+
+#cut function example; right = F means <, right = T means <=
+nums <- data.frame(-10:120)
+nums <- mutate(nums,cutnum = cut(nums$X.10.120, breaks = c(-10,0,10,20,30,40,50,60,70,80,90,Inf),
+                      labels = c('<0','0-9','10-19','20-29','30-39','40-49','50-59','60-69','70-79',
+                                 '80-89','90+'),right=F))
+
+#string lookup example
+GenMale <- c("cis male", "Cis Male", "Cis Man", "m", "M", "Mail", "maile", "Make", "Mal", "male", "Male", "Male ", "Male (CIS)", "Malr", "Man", "msle")
+GenFemale <- c("cis-female/femme", "Cis Female", "f", "F", "femail", "Femake", "female", "Female", "Female ", "Female (cis)", "Female (trans)", "Trans-female", "Trans woman", "woman", "Woman")
+
+survey$Gender_clean <- ifelse(survey$Gender %in% GenMale, "Male", ifelse(survey$Gender %in% GenFemale, "Female","Neither"))
+
+
+#connect to SQL
+1.Connect via the connections pane
+2.x <- tbl(con, 'bcbs_rx')
+3.x <- as.data.frame(x)
+
+
+
 
 
 ```
