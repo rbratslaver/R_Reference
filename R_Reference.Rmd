@@ -62,7 +62,7 @@ survey$Gender_clean <- ifelse(survey$Gender %in% GenMale, "Male", ifelse(survey$
 2.x <- tbl(con, 'bcbs_rx')
 3.x <- as.data.frame(x)
 
-
+#this will be the section for map stuff
 
 
 
