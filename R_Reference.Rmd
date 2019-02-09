@@ -45,6 +45,11 @@ names(test)[str_detect(names(test), '2')] <- gsub('2', 'level',names(test)[str_d
 
 
 #cut function example; right = F means <, right = T means <=
+#(5,10): >5and<10
+#(5,10]: >5and<=10
+#[5,10]: >=5and<=10
+#[5,10): >=5and<10
+
 nums <- data.frame(-10:120)
 nums <- mutate(nums,cutnum = cut(nums$X.10.120, breaks = c(-10,0,10,20,30,40,50,60,70,80,90,Inf),
                       labels = c('<0','0-9','10-19','20-29','30-39','40-49','50-59','60-69','70-79',
