@@ -68,8 +68,8 @@ survey$Gender_clean <- ifelse(survey$Gender %in% GenMale, "Male", ifelse(survey$
 3.x <- as.data.frame(x)
 
 #this will be the section for map stuff - even including functions!
+#adding a new line here for git tracking purposes
 
 
 
 ```
-
